@@ -4,13 +4,14 @@ var _ = require('lodash');
 var rp = require('request-promise');
 var ENDPOINT = 'http://eastdevon.gov.uk/addressfinder?qtype=bins&term=';
 
-function BCDataHelper() { }
+function BCDataHelper() {
+}
 
 // requestBinCollectionDay returns the response from the call to getBinCollectionDay
-BCDataHelper.prototype.requestBinCollectionDay = function(postCode) {
+BCDataHelper.prototype.requestBinCollectionDay = function (postCode) {
 
   return this.getBinCollectionDay(postCode).then(
-    function(response) {
+    function (response) {
       console.log('success - received bin info for ' + postCode);
       return response.body[0];
     }
@@ -18,7 +19,7 @@ BCDataHelper.prototype.requestBinCollectionDay = function(postCode) {
 };
 
 
-BCDataHelper.prototype.getBinCollectionDay = function(postCode) {
+BCDataHelper.prototype.getBinCollectionDay = function (postCode) {
 
   var options = {
     method: 'GET',
@@ -28,6 +29,10 @@ BCDataHelper.prototype.getBinCollectionDay = function(postCode) {
   };
 
   return rp(options);
+};
+
+BCDataHelper.prototype.formatResult = function (result) {
+  return result.replace(/<(?:.|\n)*?>/gm, '');
 };
 
 module.exports = BCDataHelper;
