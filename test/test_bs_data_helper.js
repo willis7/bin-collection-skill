@@ -4,13 +4,13 @@ var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
-var BCDataHelper = require('../bc_data_helper');
+var BSDataHelper = require('../bs_data_helper');
 chai.config.includeStack = true;
 
 
-describe('BCDataHelper', function() {
+describe('BSDataHelper', function() {
   this.timeout(15000);
-  var subject = new BCDataHelper();
+  var subject = new BSDataHelper();
   var post_code;
 
   // TODO: fix these brittle tests. They currently depend on the response order being exact each time. These should be stubbed
@@ -49,4 +49,14 @@ describe('BCDataHelper', function() {
         });
       });
     });
+
+  describe('#formatPostcode', function () {
+    context('a malformed postcode', function() {
+      it('is correctly encoded', function () {
+        var dirtyPostCode = "ex43dx"
+        var actual = subject.formatPostcode(dirtyPostCode)
+        return expect(actual).to.equal("ex4+3dx")
+      })
+    })
+  })
 });
