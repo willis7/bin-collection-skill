@@ -1,4 +1,4 @@
-# Bin Collection Skill
+# Bin Schedule Skill
 
 An Alexa skill for letting the user know their local bin schedule.
 
@@ -6,7 +6,7 @@ An Alexa skill for letting the user know their local bin schedule.
 
 ### Build Status
 
-[![Build Status](https://travis-ci.org/willis7/bin-collection-skill.svg?branch=master)](https://travis-ci.org/willis7/bin-collection-skill)
+[![Build Status](https://travis-ci.org/willis7/bin-schedule-service.svg?branch=master)](https://travis-ci.org/willis7/bin-schedule-service)
 
 ### TODO
 
